@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 
-const NewDiscussion = () => {
+const NewDiscussion = ({ onAddDiscussion }) => {
   const [isValid, setIsValid] = useState(false);
 
   const nameRef = useRef();
@@ -27,20 +27,16 @@ const NewDiscussion = () => {
       url: "https://github.com/codestates-seb/agora-states-fe/discussions/45",
       author: nameRef.current.value,
       answer: null,
-      bodyHTML: contentRef.value,
+      bodyHTML: contentRef.current.value,
       avatarUrl:
         "https://avatars.githubusercontent.com/u/95295766?s=64&u=85d493e0be0d2ca55965efd9f6c5b268c9dca168&v=4",
     };
 
-    fetch("http://localhost:3001/discussions", {
-      method: "POST",
-      body: JSON.stringify(newDiscussion),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }) //
-      .then((res) => res.json())
-      .then((res) => console.log(res));
+    onAddDiscussion(newDiscussion);
+    nameRef.current.value = "";
+    titleRef.current.value = "";
+    contentRef.current.value = "";
+    setIsValid(false);
   };
 
   return (
