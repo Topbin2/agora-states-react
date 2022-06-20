@@ -57,10 +57,6 @@ body {
   background-color: #0e1217;
 }
 
-.hide {
-  display: none;
-}
-
 /* form */
 
 .form__container {
@@ -127,6 +123,10 @@ body {
   width: 540px;
 }
 
+.discussions__container {
+  width: 100%;
+}
+
 .discussion__container {
   display: flex;
   justify-content: space-between;
@@ -172,7 +172,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: rgb(27, 196, 27);
+  /* color: rgb(27, 196, 27); */
   font-size: 1.5rem;
 }
 
