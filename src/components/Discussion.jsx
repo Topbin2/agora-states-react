@@ -17,6 +17,10 @@ const Discussion = ({ discussion }) => {
           <a href={url}>{title}</a>
         </h2>
         <div className="discussion__information">
+          <div className="discussion__util__button">
+            <button>EDIT</button>
+            <button>DELETE</button>
+          </div>
           {`${author} / ${new Date(createdAt).toLocaleString("Ko-KR")}`}
         </div>
       </div>
