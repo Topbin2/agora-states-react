@@ -237,6 +237,10 @@ body {
   margin-bottom: 20px;
 }
 
+.edit-modal > .form__input--wrapper > .form__textbox > textarea {
+  height: 20rem !important;
+}
+
 .edit-modal-btn {
   padding: 0.5rem 1.5rem;
   cursor: pointer;

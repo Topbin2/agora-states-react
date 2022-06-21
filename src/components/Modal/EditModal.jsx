@@ -8,7 +8,7 @@ const EditModal = ({ onModal, discussion, editDiscussion }) => {
   const [title, setTitle] = useState(propTitle);
   const [content, setContent] = useState(bodyHTML);
 
-  const addDiscussion = () => {
+  const handleConfirmClick = () => {
     const changeDiscussion = {
       author: name,
       title,
@@ -48,6 +48,8 @@ const EditModal = ({ onModal, discussion, editDiscussion }) => {
             <textarea
               id="story"
               name="story"
+              cols="100"
+              rows="100"
               placeholder="Ask a question, start a conversation, or make an announcement"
               value={content}
               onChange={(e) => setContent(e.target.value)}
@@ -58,14 +60,11 @@ const EditModal = ({ onModal, discussion, editDiscussion }) => {
         <button className="edit-modal-btn cancel" onClick={() => onModal()}>
           Cancel
         </button>
-        <button
-          className="edit-modal-btn confirm"
-          onClick={addDiscussion}
-        >
+        <button className="edit-modal-btn confirm" onClick={handleConfirmClick}>
           Confirm
         </button>
       </div>
-      <Backdrop />
+      <Backdrop onModal={onModal} />
     </>
   );
 };

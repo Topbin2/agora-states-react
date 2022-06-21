@@ -27,7 +27,7 @@ const Discussion = ({ discussion, editDiscussion, deleteDiscussion }) => {
           <div className="discussion__information">
             <div className="discussion__util__button">
               <button onClick={() => setEditModal(true)}>EDIT</button>
-              <button onClick={() => deleteDiscussion(id)} >DELETE</button>
+              <button onClick={() => deleteDiscussion(id)}>DELETE</button>
             </div>
             {`${author} / ${new Date(createdAt).toLocaleString("Ko-KR")}`}
           </div>
@@ -40,13 +40,13 @@ const Discussion = ({ discussion, editDiscussion, deleteDiscussion }) => {
           )}
         </div>
       </li>
-      {editModal ? (
+      {editModal && (
         <EditModal
           onModal={handleEditModal}
           discussion={discussion}
           editDiscussion={editDiscussion}
         />
-      ) : null}
+      )}
     </>
   );
 };

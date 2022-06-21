@@ -23,7 +23,7 @@ function App() {
   const getDiscussions = useCallback(() => {
     fetch(`http://localhost:3001/discussions?page=${page}`) //
       .then((res) => res.json())
-      .then((res) => setDiscussions(res));
+      .then((resData) => setDiscussions(resData));
   }, [page]);
 
   useEffect(() => {
@@ -60,10 +60,10 @@ function App() {
       },
     }) //
       .then((res) => res.json())
-      .then((res) => {
+      .then((index) => {
         setDiscussions((prevDiscussions) => {
           const copyDiscussion = [...prevDiscussions];
-          copyDiscussion.splice(res, 1);
+          copyDiscussion.splice(index, 1);
           return copyDiscussion;
         });
       })
