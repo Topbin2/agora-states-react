@@ -1,5 +1,5 @@
 import React from "react";
-import Backdrop from "./Backdrop";
+import Backdrop from "../UI/Backdrop";
 
 const DeleteModal = ({ onModal, discussion, deleteDiscussion }) => {
   return (

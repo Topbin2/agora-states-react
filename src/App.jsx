@@ -3,6 +3,7 @@ import { useCallback, useEffect, useState } from "react";
 import "./App.css";
 import Discussions from "./components/Discussion/Discussions";
 import NewDiscussion from "./components/Discussion/NewDiscussion";
+import SearchDiscussion from "./components/Discussion/SearchDiscussion";
 import LoadingSpinner from "./components/UI/LoadingSpinner";
 
 function App() {
@@ -83,11 +84,24 @@ function App() {
       .catch((e) => console.log(`에러 캐치 ${e}`));
   };
 
+  const searchDiscussion = (value) => {
+    if (value.trim().length === 0) getDiscussions();
+    else {
+      fetch(`http://localhost:3001/discussions?text=${value}`) //
+        .then((res) => res.json())
+        .then((resData) => {
+          setDiscussions(resData);
+        })
+        .catch((e) => console.log(`에러 캐치 ! ${e}`));
+    }
+  };
+
   return (
     <main>
       <h1>MY AGORA STATES</h1>
       <button id="new__discussion">New discussion</button>
       <NewDiscussion onAddDiscussion={addDiscussion} />
+      <SearchDiscussion onSearch={searchDiscussion} />
       <section id="main__section">
         {isLoading ? (
           <LoadingSpinner />

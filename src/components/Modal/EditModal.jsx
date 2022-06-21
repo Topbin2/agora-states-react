@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Backdrop from "./Backdrop";
+import Backdrop from "../UI/Backdrop";
 
 const EditModal = ({ onModal, discussion, editDiscussion }) => {
   const { title: propTitle, author, bodyHTML, id } = discussion;

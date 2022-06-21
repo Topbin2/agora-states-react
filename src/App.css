@@ -238,7 +238,7 @@ main {
   width: 30rem;
   z-index: 10;
   position: fixed;
-  top: 20vh;
+  top: 25vh;
   left: calc(50% - 15rem);
 }
 
@@ -327,4 +327,10 @@ main {
   100% {
     transform: rotate(360deg);
   }
+}
+
+/* Search */
+.search__input {
+  width: 100%;
+  margin-bottom: 2.5rem;
 }
