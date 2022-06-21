@@ -72,14 +72,6 @@ function App() {
         "Content-Type": "application/json",
       },
     }) //
-      .then((res) => res.json())
-      .then((index) => {
-        setDiscussions((prevDiscussions) => {
-          const copyDiscussion = [...prevDiscussions];
-          copyDiscussion.splice(index, 1);
-          return copyDiscussion;
-        });
-      })
       .then(() => getDiscussions())
       .catch((e) => console.log(`에러 캐치 ${e}`));
   };
