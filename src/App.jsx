@@ -23,9 +23,14 @@ function App() {
   };
 
   const getDiscussions = useCallback(() => {
+    setIsLoading(true);
     fetch(`http://localhost:3001/discussions?page=${page}`) //
       .then((res) => res.json())
-      .then((resData) => setDiscussions(resData));
+      .then((resData) => {
+        setIsLoading(false);
+        setDiscussions(resData);
+      })
+      .catch((e) => console.log(`에러 캐치 ${e}`));
   }, [page]);
 
   useEffect(() => {
@@ -33,6 +38,7 @@ function App() {
   }, [page, getDiscussions]);
 
   const addDiscussion = (newDiscussion) => {
+    setIsLoading(true);
     fetch("http://localhost:3001/discussions", {
       method: "POST",
       body: JSON.stringify(newDiscussion),
@@ -40,10 +46,12 @@ function App() {
         "Content-Type": "application/json",
       },
     }) //
-      .then(() => getDiscussions());
+      .then(() => getDiscussions())
+      .catch((e) => console.log(`에러 캐치 ${e}`));
   };
 
   const editDiscussion = (newDiscussion, id) => {
+    setIsLoading(true);
     fetch(`http://localhost:3001/discussions/${id}`, {
       method: "PUT",
       body: JSON.stringify(newDiscussion),
@@ -51,10 +59,12 @@ function App() {
         "Content-Type": "application/json",
       },
     }) //
-      .then(() => getDiscussions());
+      .then(() => getDiscussions())
+      .catch((e) => console.log(`에러 캐치 ${e}`));
   };
 
   const deleteDiscussion = (id) => {
+    setIsLoading(true);
     fetch(`http://localhost:3001/discussions/${id}`, {
       method: "DELETE",
       headers: {
@@ -69,7 +79,8 @@ function App() {
           return copyDiscussion;
         });
       })
-      .then(() => getDiscussions());
+      .then(() => getDiscussions())
+      .catch((e) => console.log(`에러 캐치 ${e}`));
   };
 
   return (
