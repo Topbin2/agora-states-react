@@ -31,7 +31,10 @@ function App() {
         setIsLoading(false);
         setDiscussions(resData);
       })
-      .catch((e) => console.log(`에러 캐치 ${e}`));
+      .catch((e) => {
+        setIsLoading(true);
+        console.log(`에러 캐치 ${e}`);
+      });
   }, [page]);
 
   useEffect(() => {
@@ -48,7 +51,10 @@ function App() {
       },
     }) //
       .then(() => getDiscussions())
-      .catch((e) => console.log(`에러 캐치 ${e}`));
+      .catch((e) => {
+        setIsLoading(true);
+        console.log(`에러 캐치 ${e}`);
+      });
   };
 
   const editDiscussion = (newDiscussion, id) => {
@@ -61,7 +67,10 @@ function App() {
       },
     }) //
       .then(() => getDiscussions())
-      .catch((e) => console.log(`에러 캐치 ${e}`));
+      .catch((e) => {
+        setIsLoading(true);
+        console.log(`에러 캐치 ${e}`);
+      });
   };
 
   const deleteDiscussion = (id) => {
@@ -73,7 +82,10 @@ function App() {
       },
     }) //
       .then(() => getDiscussions())
-      .catch((e) => console.log(`에러 캐치 ${e}`));
+      .catch((e) => {
+        setIsLoading(true);
+        console.log(`에러 캐치 ${e}`);
+      });
   };
 
   const searchDiscussion = (value) => {
@@ -84,7 +96,10 @@ function App() {
         .then((resData) => {
           setDiscussions(resData);
         })
-        .catch((e) => console.log(`에러 캐치 ! ${e}`));
+        .catch((e) => {
+          setIsLoading(true);
+          console.log(`에러 캐치 ${e}`);
+        });
     }
   };
 
