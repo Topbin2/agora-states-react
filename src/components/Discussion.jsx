@@ -1,13 +1,19 @@
 import React, { useState } from "react";
+import DeleteModal from "./Modal/DeleteModal";
 import EditModal from "./Modal/EditModal";
 
 const Discussion = ({ discussion, editDiscussion, deleteDiscussion }) => {
   const { createdAt, title, url, author, answer, avatarUrl, id } = discussion;
 
   const [editModal, setEditModal] = useState(false);
+  const [deleteModal, setDeleteModal] = useState(false);
 
   const handleEditModal = () => {
     setEditModal(false);
+  };
+
+  const handleDeleteModal = () => {
+    setDeleteModal((prevState) => !prevState);
   };
 
   return (
@@ -27,7 +33,10 @@ const Discussion = ({ discussion, editDiscussion, deleteDiscussion }) => {
           <div className="discussion__information">
             <div className="discussion__util__button">
               <button onClick={() => setEditModal(true)}>EDIT</button>
-              <button onClick={() => deleteDiscussion(id)}>DELETE</button>
+              <button className="delete__button" onClick={handleDeleteModal}>
+                DELETE
+              </button>
+              {/* <button onClick={() => deleteDiscussion(id)}>DELETE</button> */}
             </div>
             {`${author} / ${new Date(createdAt).toLocaleString("Ko-KR")}`}
           </div>
@@ -45,6 +54,13 @@ const Discussion = ({ discussion, editDiscussion, deleteDiscussion }) => {
           onModal={handleEditModal}
           discussion={discussion}
           editDiscussion={editDiscussion}
+        />
+      )}
+      {deleteModal && (
+        <DeleteModal
+          onModal={handleDeleteModal}
+          discussion={discussion}
+          deleteDiscussion={deleteDiscussion}
         />
       )}
     </>

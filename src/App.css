@@ -177,9 +177,14 @@ body {
 }
 
 .discussion__util__button > button:hover {
-  color: white;
-  border-color: white;
+  color: #48a35a;
+  border-color: #48a35a;
   cursor: pointer;
+}
+
+.discussion__util__button > .delete__button:hover {
+  color: red;
+  border-color: red;
 }
 
 /* answered */
@@ -229,7 +234,7 @@ body {
   margin-bottom: 30px;
 }
 
-.edit-modal > .form__input--wrapper > .form__input--name > input{
+.edit-modal > .form__input--wrapper > .form__input--name > input {
   width: 100%;
 }
 
@@ -269,3 +274,12 @@ body {
   top: 0;
   left: 0;
 }
+
+.delete-modal > .edit-modal > p {
+  font-size: 1.75rem;
+  margin-bottom: 2.5rem;
+}
+
+/* .delete-modal > .backdrop {
+  background-color: rgba(0, 0, 0, 0.75);
+} */
