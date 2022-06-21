@@ -1,12 +1,14 @@
 import { useCallback, useEffect, useState } from "react";
 
 import "./App.css";
-import Discussions from "./components/Discussions";
-import NewDiscussion from "./components/NewDiscussion";
+import Discussions from "./components/Discussion/Discussions";
+import NewDiscussion from "./components/Discussion/NewDiscussion";
+import LoadingSpinner from "./components/UI/LoadingSpinner";
 
 function App() {
   const [discussions, setDiscussions] = useState([]);
   const [page, setPage] = useState(1);
+  const [isLoading, setIsLoading] = useState(false);
 
   const pagination = (e) => {
     const target = e.target.id;
@@ -75,11 +77,17 @@ function App() {
       <h1>MY AGORA STATES</h1>
       <button id="new__discussion">New discussion</button>
       <NewDiscussion onAddDiscussion={addDiscussion} />
-      <Discussions
-        discussions={discussions}
-        editDiscussion={editDiscussion}
-        deleteDiscussion={deleteDiscussion}
-      />
+      <section id="main__section">
+        {isLoading ? (
+          <LoadingSpinner />
+        ) : (
+          <Discussions
+            discussions={discussions}
+            editDiscussion={editDiscussion}
+            deleteDiscussion={deleteDiscussion}
+          />
+        )}
+      </section>
       <section id="paging__btn__container">
         <button id="prev__page" onClick={pagination}>
           PREV
