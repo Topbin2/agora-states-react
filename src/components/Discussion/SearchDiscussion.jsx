@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 
 const SearchDiscussion = ({ onSearch }) => {
+
   const inputRef = useRef();
 
   const handleSearch = () => {
